@@ -81,7 +81,7 @@ bintray {
     pkg {
         repo = 'Grand-Test-Auto'
         name = 'Spock-Excel-Data-Reader'
-        userOrg = 'TestWorx'
+        userOrg = 'testworx'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
 
