@@ -80,14 +80,14 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'Grand-Test-Auto'
-        name = 'Spock-Excel-Data-Reader'
+        name = 'spock-excel-data-reader'
         userOrg = 'testworx'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
 
         version {
             name = '1.0'
-            desc = 'Spock Excel Data Reader 1.0'
+            desc = 'Spock Excel Data Reader '+version.toString()
             released  = new Date()
             vcsTag = version.toString()
 //        attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
