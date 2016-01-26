@@ -7,6 +7,7 @@
  * user guide available at https://docs.gradle.org/2.7/userguide/tutorial_groovy_projects.html
  */
 
+
 plugins {
     id "com.jfrog.bintray" version "1.4"
 }
@@ -62,7 +63,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository (
-                    url: 'https://api.bintray.com/maven/testworx/grand-test-auto/spock-excel-data-reader'
+                    url: 'https://api.bintray.com/maven/testworx/Grand-Test-Auto/spock-excel-data-reader/;publish=1'
             ) {
                 authentication(
                         userName: System.getenv('BINTRAY_USERNAME'),
