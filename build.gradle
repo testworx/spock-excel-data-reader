@@ -39,6 +39,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.4"
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
@@ -61,7 +65,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository (
-                    url: 'https://api.bintray.com/maven/nvonop/maven/SeleniumFramework'
+                    url: 'https://api.bintray.com/maven/testworx/grand-test-auto/spock-excel-data-reader'
             ) {
                 authentication(
                         userName: System.getenv('BINTRAY_USERNAME'),
@@ -71,3 +75,15 @@ uploadArchives {
         }
     }
 }
+
+//bintray {
+//    user = System.getenv('BINTRAY_USERNAME')
+//    key = System.getenv('BINTRAY_ACCESS_KEY')
+//    pkg {
+//        repo = 'Grand-Test-Auto'
+//        name = 'Spock-Excel-Data-Reader'
+//        userOrg = 'TestWorx'
+//        licenses = ['MIT']
+//        vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
+//    }
+//}
