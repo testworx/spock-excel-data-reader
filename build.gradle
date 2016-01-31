@@ -67,7 +67,7 @@ bintray {
         vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
 
         version {
-            name = version
+            name = version.toString()
             desc = 'Spock Excel Data Reader '+version.toString()
             released  = new Date()
             vcsTag = version.toString()
