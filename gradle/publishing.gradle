@@ -19,7 +19,7 @@ bintray {
     publish = true //If version should be auto published after an upload
 
     pkg {
-        desc = 'Library for reading test data out of Excel to drive Spock tests.'
+
         repo = 'Grand-Test-Auto'
         name = 'spock-excel-data-reader'
         userOrg = 'testworx'
@@ -31,9 +31,12 @@ bintray {
 
 
         version {
+
+            desc = 'Library for reading test data out of Excel to drive Spock tests.'
             name = project.version
             vcsTag = project.version
             released  = new Date()
+            
         }
     }
 }
