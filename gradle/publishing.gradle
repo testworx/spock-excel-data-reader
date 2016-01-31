@@ -23,6 +23,7 @@ bintray {
         repo = 'Grand-Test-Auto'
         name = 'spock-excel-data-reader'
         userOrg = 'testworx'
+        desc = 'Library for reading test data out of Excel to drive Spock tests.'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
         issueTrackerUrl = 'https://github.com/testworx/spock-excel-data-reader/issues'
@@ -32,11 +33,10 @@ bintray {
 
         version {
 
-            desc = 'Library for reading test data out of Excel to drive Spock tests.'
             name = project.version
             vcsTag = project.version
             released  = new Date()
-            
+
         }
     }
 }
