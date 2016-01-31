@@ -18,12 +18,9 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 
 group = 'io.testworx'
-version = '1.0'
+version = '1.1'
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
@@ -58,22 +55,6 @@ artifacts {
 
 jar { exclude('src/org/nvonop/selenium/test') }
 
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository (
-                    url: 'https://api.bintray.com/maven/testworx/Grand-Test-Auto/spock-excel-data-reader/;publish=1'
-            ) {
-                authentication(
-                        userName: System.getenv('BINTRAY_USERNAME'),
-                        password: System.getenv('BINTRAY_ACCESS_KEY')
-                )
-            }
-        }
-    }
-}
-
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
@@ -86,21 +67,10 @@ bintray {
         vcsUrl = 'https://github.com/testworx/spock-excel-data-reader.git'
 
         version {
-            name = '1.0'
+            name = version
             desc = 'Spock Excel Data Reader '+version.toString()
             released  = new Date()
             vcsTag = version.toString()
-//        attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
 }
-
-//pkg {
-//    version {
-//        name = '1.0'
-//        desc = 'Spock Excel Data Reader 1.0'
-//        released  = new Date()
-//        vcsTag = version.to
-////        attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-//    }
-//}

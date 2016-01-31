@@ -39,7 +39,7 @@ class ColumnParser {
         dataSheet = sheet
     }
 
-    public ArrayList columnDataToList(int index) {
+    public ArrayList columnDataToList(int columnIndex) {
         cellParser = new CellParser()
         List data = new ArrayList()
         Cell cell
@@ -47,8 +47,27 @@ class ColumnParser {
         Iterator rowIterator = dataSheet.rowIterator()
         while (rowIterator.hasNext()) {
             Row row = (Row) rowIterator.next()
-            cell = row.getCell(index)
+            cell = row.getCell(columnIndex)
             cellParser.addCellDataToList(cell, data)
+        }
+        return data
+    }
+
+
+    public ArrayList columnDataToList(int columnIndex, int rowStartIndex) {
+        int currentRow
+        cellParser = new CellParser()
+        List data = new ArrayList()
+        Cell cell
+
+        Iterator rowIterator = dataSheet.rowIterator()
+        while (rowIterator.hasNext()) {
+            Row row = (Row) rowIterator.next()
+            currentRow = row.getRowNum()
+            if (currentRow >= rowStartIndex) {
+                cell = row.getCell(columnIndex)
+                cellParser.addCellDataToList(cell, data)
+            }
         }
         return data
     }

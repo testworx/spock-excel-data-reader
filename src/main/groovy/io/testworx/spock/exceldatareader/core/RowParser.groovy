@@ -50,7 +50,7 @@ class RowParser {
         Iterator headerCells = headerRow.cellIterator();
         while (headerCells.hasNext()) {
             Cell cell = (Cell) headerCells.next()
-            if(cell.stringCellValue.equalsIgnoreCase(name)) {
+            if(cell.stringCellValue.trim().equalsIgnoreCase(name)) {
                 index = cell.getColumnIndex()
             }
         }
@@ -65,6 +65,23 @@ class RowParser {
             Cell cell = (Cell) cells.next()
             //int cellIndex = cell.getColumnIndex()
             cellParser.addCellDataToList(cell, data)
+        }
+        return data
+    }
+
+    //Added to address issue #1
+    public List rowDataToList(Row row, int columnStart) {
+        int currentCellIndex = 0
+        cellParser = new CellParser()
+        List data = new ArrayList()
+        Iterator cells = row.cellIterator();
+        while (cells.hasNext()) {
+            Cell cell = (Cell) cells.next()
+            currentCellIndex = cell.getColumnIndex()
+
+            if (currentCellIndex >= columnStart)  {
+                cellParser.addCellDataToList(cell, data)
+            }
         }
         return data
     }

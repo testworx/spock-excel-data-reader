@@ -76,6 +76,19 @@ class ExcelDataReaderSpec extends Specification {
         columnData.size() == 22
     }
 
+    public dataSetReturnedFromNamedColumnWithoutHeaderTest() {
+        given: "I open a spreadsheet and specify a worksheet"
+        System.setProperty('test.data.dir', System.getProperty("user.dir")+ DATA_FILE_LOCATION)
+        ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME , DATA_SHEET_2_NAME)
+
+        when: "I retrieve data from the column named Keyword"
+        List columnData = excelDataReader.getDataFromColumn("TestCase", 1)
+
+        then: "The column data is as expected"
+        columnData.size() == 21
+        columnData.get(0) == "Test 1 - Click Button 1"
+    }
+
     public dataSetReturnedFromIndexedColumnTest() {
         given: "I open a spreadsheet on the default worksheet"
         System.setProperty('test.data.dir', System.getProperty("user.dir")+DATA_FILE_LOCATION)
@@ -86,6 +99,20 @@ class ExcelDataReaderSpec extends Specification {
 
         then: "The column data is as expected"
         columnData.size() == 22
+
+    }
+
+    public dataSetReturnedFromIndexedColumnWithoutHeaderTest() {
+        given: "I open a spreadsheet on the default worksheet"
+        System.setProperty('test.data.dir', System.getProperty("user.dir")+DATA_FILE_LOCATION)
+        ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME)
+
+        when: "I retrieve data from a column by its index"
+        List columnData = excelDataReader.getDataFromColumn(0, 1)
+
+        then: "The column data is as expected"
+        columnData.size() == 21
+        columnData.get(0) == "Test 1 - Click Button 1"
 
     }
 
@@ -105,7 +132,22 @@ class ExcelDataReaderSpec extends Specification {
         rowData.get(3) == new Date("Wed Jan 16 00:00:00 GMT 1980")
     }
 
-    public DataSetReturnedFromIndexedRowTest() {
+    public dataSetReturnedFromNamedRowWithoutFirstParameterTest() {
+        given: "I open a spreadsheet on the default worksheet"
+        System.setProperty('test.data.dir', System.getProperty("user.dir")+DATA_FILE_LOCATION)
+        ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME)
+
+        when: "I retrieve data from a column by its index"
+        List rowData = excelDataReader.getDataFromRow("Test 2 - Click Button 2", 1)
+
+        then: "The row data is as expected"
+        rowData.size() == 3
+        rowData.get(0) == "test"
+        rowData.get(1) == "TEST"
+        rowData.get(2) == new Date("Wed Jan 16 00:00:00 GMT 1980")
+    }
+
+    public dataSetReturnedFromIndexedRowTest() {
         given: "I open a spreadsheet on the default worksheet"
         System.setProperty('test.data.dir', System.getProperty("user.dir")+DATA_FILE_LOCATION)
         ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME)
@@ -119,5 +161,20 @@ class ExcelDataReaderSpec extends Specification {
         rowData.get(1) == "test"
         rowData.get(2) == "TEST"
         rowData.get(3) == new Date("Wed Jan 16 00:00:00 GMT 1980")
+    }
+
+    public dataSetReturnedFromIndexedRowWithoutFirstParameterTest() {
+        given: "I open a spreadsheet on the default worksheet"
+        System.setProperty('test.data.dir', System.getProperty("user.dir")+DATA_FILE_LOCATION)
+        ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME)
+
+        when: "I retrieve data from a column by its index"
+        List rowData = excelDataReader.getDataFromRow(5, 1)
+
+        then: "The row data is as expected"
+        rowData.size() == 3
+        rowData.get(0) == "test"
+        rowData.get(1) == "TEST"
+        rowData.get(2) == new Date("Wed Jan 16 00:00:00 GMT 1980")
     }
 }
