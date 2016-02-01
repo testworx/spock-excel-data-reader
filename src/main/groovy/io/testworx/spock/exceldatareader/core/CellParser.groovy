@@ -53,7 +53,7 @@ class CellParser {
                 }
                 break;
             case Cell.CELL_TYPE_BOOLEAN:
-                data.add(cell.getBooleanCellValue() + "")
+                data.add(cell.getBooleanCellValue())
                 break;
             case Cell.CELL_TYPE_FORMULA:
                 data.add(cell.getCellFormula())

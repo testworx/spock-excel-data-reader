@@ -112,7 +112,7 @@ class ExcelDataReader {
         Iterator rowIterator = dataSheet.rowIterator()
         while (rowIterator.hasNext()) {
             Row row = (Row) rowIterator.next()
-            if(row.getCell(0).getStringCellValue().equalsIgnoreCase(name)) {
+            if(row.getCell(0).getStringCellValue().trim().equalsIgnoreCase(name)) {
                 return rowParser.rowDataToList(row, columnStartIndex)
             }
         }
