@@ -39,8 +39,15 @@ dependencies {
     compile 'org.apache.xmlbeans:xmlbeans:2.+'
     compile 'org.apache.poi:ooxml-schemas:1.1'
     compile 'dom4j:dom4j:1.+'
+    compile 'xml-apis:xml-apis:2.0.2'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     testCompile 'junit:junit:4.12'
 }
+
+configurations.all {
+        resolutionStrategy {
+            force 'xml-apis:xml-apis:2.0.2'
+        }
+    }
 
 jar { exclude('src/org/nvonop/selenium/test') }
