@@ -119,6 +119,19 @@ class ExcelDataReader {
         return null
     }
 
+    /**
+     * This method returns the value for a specific cell based on the row name provided and the column index
+     * Note:  columnIndex is zero based
+     * @param rowName
+     * @param columnIndex
+     * @return
+     */
+    //Added to address issue #6
+    public String getDataFromCell(String rowName, int columnIndex) {
+        def rowValues = getDataFromRow rowName
+        return rowValues[columnIndex]
+    }
+
     public String getCurrentWorksheetName() {
         return dataSheet.getSheetName()
     }

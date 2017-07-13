@@ -177,4 +177,17 @@ class ExcelDataReaderSpec extends Specification {
         rowData.get(1) == "TEST"
         rowData.get(2) == new Date("Wed Jan 16 00:00:00 GMT 1980")
     }
+
+    public columnValueReturnedFromNamedRowTest() {
+
+        given: "I open a spreadsheet and specify a worksheet"
+        System.setProperty('test.data.dir', System.getProperty("user.dir")+ DATA_FILE_LOCATION)
+        ExcelDataReader excelDataReader = new ExcelDataReader(System.getProperty("test.data.dir"), DATA_FILE_NAME , DATA_SHEET_2_NAME)
+
+        when: "I retrieve single cell data by specifying a row as a string and the column as a number"
+        String cellData = excelDataReader.getDataFromCell("Test 1 - Click Button 1", 0)
+
+        then: "The column data is as expected"
+        cellData == "Test 1 - Click Button 1"
+    }
 }
